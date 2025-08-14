@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الصور - كوتش صدقي رجاء</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFB6C1;
+            --secondary-color: #DDA0DD;
+            --accent-color: #98FB98;
+            --text-dark: #4A4A4A;
+            --text-light: #6B6B6B;
+            --white: #FFFFFF;
+            --light-bg: #F8F9FA;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--white);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 20px 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .back-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .pictures-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pictures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .picture-item {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .picture-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .picture-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .picture-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 15px;
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .pictures-container {
+                padding: 0 15px;
+            }
+
+            .pictures-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 25px 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .back-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .pictures-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="back-btn">← العودة للصفحة الرئيسية</a>
+        <h1>معرض الصور</h1>
+        <p>تصفح مجموعة من الصور من ورشات العمل والجلسات التدريبية</p>
+    </div>
+
+    <div class="pictures-container">
+        <div class="pictures-grid">
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.30 (2).jpeg" alt="ورشة عمل 1">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.30 (1).jpeg" alt="ورشة عمل 2">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.30.jpeg" alt="ورشة عمل 3">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.29 (5).jpeg" alt="ورشة عمل 4">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.29 (4).jpeg" alt="ورشة عمل 5">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.29 (3).jpeg" alt="ورشة عمل 6">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.29 (2).jpeg" alt="ورشة عمل 7">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.29 (1).jpeg" alt="ورشة عمل 8">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.29.jpeg" alt="ورشة عمل 9">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.28 (4).jpeg" alt="ورشة عمل 10">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.28 (3).jpeg" alt="ورشة عمل 11">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.28 (2).jpeg" alt="ورشة عمل 12">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.28 (1).jpeg" alt="ورشة عمل 13">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.28.jpeg" alt="ورشة عمل 14">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.27 (3).jpeg" alt="ورشة عمل 15">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.27 (2).jpeg" alt="ورشة عمل 16">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.27 (1).jpeg" alt="ورشة عمل 17">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.27.jpeg" alt="ورشة عمل 18">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.25.jpeg" alt="ورشة عمل 19">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.21.jpeg" alt="ورشة عمل 20">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.19 (1).jpeg" alt="ورشة عمل 21">
+            </div>
+            
+            <div class="picture-item">
+                <img src="gallery/images/WhatsApp Image 2025-08-14 at 14.52.19.jpeg" alt="ورشة عمل 22">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

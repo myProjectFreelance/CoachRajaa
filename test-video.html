@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الفيديو</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+        }
+        .test-video {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        video {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .info {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-video">
+        <h1>اختبار تشغيل الفيديو</h1>
+        
+        <div class="info">
+            <p><strong>ملاحظة:</strong> إذا لم يعمل الفيديو هنا، فهناك مشكلة في ملفات الفيديو نفسها</p>
+        </div>
+        
+        <h3>اختبار الفيديو 1</h3>
+        <video controls>
+            <source src="gallery/videos/1.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        
+        <h3>اختبار الفيديو 2</h3>
+        <video controls>
+            <source src="gallery/videos/2.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+        
+        <div class="info">
+            <p><strong>تعليمات:</strong></p>
+            <p>1. اضغط على زر التشغيل</p>
+            <p>2. افتح وحدة تحكم المتصفح (F12) وانظر للأخطاء</p>
+            <p>3. جرب فتح الفيديو مباشرة: <a href="gallery/videos/1.mp4" target="_blank">1.mp4</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // Debug video loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach((video, index) => {
+                console.log(`Test Video ${index + 1}:`, video);
+                
+                video.addEventListener('loadstart', () => {
+                    console.log(`Test Video ${index + 1}: Load started`);
+                });
+                
+                video.addEventListener('loadedmetadata', () => {
+                    console.log(`Test Video ${index + 1}: Metadata loaded, duration:`, video.duration);
+                });
+                
+                video.addEventListener('canplay', () => {
+                    console.log(`Test Video ${index + 1}: Can play`);
+                });
+                
+                video.addEventListener('error', (e) => {
+                    console.error(`Test Video ${index + 1}: Error:`, e);
+                    console.error(`Test Video ${index + 1}: Error details:`, video.error);
+                });
+                
+                video.addEventListener('loadeddata', () => {
+                    console.log(`Test Video ${index + 1}: Data loaded`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
