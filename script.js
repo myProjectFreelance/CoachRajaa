@@ -178,3 +178,136 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+// Testimonials Slider Functionality
+let currentSlideIndex = 0; // Start from 0 for array indexing
+const totalSlides = 3;
+let autoPlayInterval;
+
+function showSlide(n) {
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    // Validate slide number
+    if (n >= totalSlides) currentSlideIndex = 0;
+    if (n < 0) currentSlideIndex = totalSlides - 1;
+    
+    // Update currentSlideIndex if a specific slide was requested
+    if (n >= 0 && n < totalSlides) {
+        currentSlideIndex = n;
+    }
+    
+    // Hide all slides and remove active from all dots
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Show current slide and activate corresponding dot
+    slides[currentSlideIndex].classList.add('active');
+    dots[currentSlideIndex].classList.add('active');
+    
+    console.log(`Showing slide ${currentSlideIndex + 1}`);
+}
+
+function nextSlide() {
+    showSlide(currentSlideIndex + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSlideIndex - 1);
+}
+
+function goToSlide(n) {
+    showSlide(n - 1); // Convert to 0-based index
+}
+
+// Auto-play functionality
+function startAutoPlay() {
+    if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+    }
+    autoPlayInterval = setInterval(() => {
+        nextSlide();
+    }, 5000);
+}
+
+function stopAutoPlay() {
+    if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+    }
+}
+
+// Initialize slider when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for the DOM to be fully ready
+    setTimeout(() => {
+        // Initialize the slider
+        showSlide(0);
+        startAutoPlay();
+        
+        // Add touch/swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        
+        const slider = document.querySelector('.testimonials-slider');
+        
+        if (slider) {
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                stopAutoPlay(); // Pause auto-play during interaction
+            });
+            
+            slider.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+                startAutoPlay(); // Resume auto-play after interaction
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe left - next slide
+                        nextSlide();
+                    } else {
+                        // Swipe right - previous slide
+                        prevSlide();
+                    }
+                }
+            }
+        }
+        
+        // Add click event listeners for navigation buttons
+        const prevBtn = document.querySelector('.slider-btn.prev');
+        const nextBtn = document.querySelector('.slider-btn.next');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                stopAutoPlay();
+                prevSlide();
+                startAutoPlay();
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                stopAutoPlay();
+                nextSlide();
+                startAutoPlay();
+            });
+        }
+        
+        // Add click event listeners for dots
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                stopAutoPlay();
+                goToSlide(index + 1);
+                startAutoPlay();
+            });
+        });
+        
+        console.log('Testimonials slider initialized successfully');
+    }, 100);
+});
